@@ -16,7 +16,30 @@ class Post < ApplicationRecord
 
 
 def self.search_published(query)
-  self.search({     query: { must: [ { multi_match: { query: query, fields: [:author, :title, :body, :tags] } },]  }   })
+  self.search({
+    query: {
+      bool: {
+        must: [
+        {
+          multi_match: {
+            query: query,
+            fields: [:author, :title, :body, :tags]
+          }
+        },
+        {
+          match: {
+            published: true
+          }
+        }]
+      }
+    }
+  })
 end
+
+def init
+      self.published  ||= true
+      
+end
+
 
 end
