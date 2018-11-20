@@ -28,17 +28,12 @@ def self.search_published(query)
         },
         {
           match: {
-            published: true
+            published: true, false
           }
         }]
       }
     }
   })
-end
-
-def init
-      self.published  ||= true
-      
 end
 
 
