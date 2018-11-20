@@ -27,9 +27,7 @@ def self.search_published(query)
           }
         },
         {
-          match: {
-            published: true
-          }
+        
         }]
       }
     }
